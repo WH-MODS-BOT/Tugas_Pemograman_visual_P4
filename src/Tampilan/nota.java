@@ -11,6 +11,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import koneksi.koneksi;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.JRException;
 /**
  *
  * @author ucok
@@ -521,6 +527,7 @@ private DefaultTableModel tabmode;
         stat2.executeUpdate();
       } 
         JOptionPane.showMessageDialog(null, "data berhasil disimpan");
+        cetak();
     }
         catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "data gagal disimpan" + e);
@@ -741,6 +748,45 @@ private DefaultTableModel tabmode;
     } 
     this.txtttotal.setText(Integer.toString(total));
   }
+  
+  public void cetak(){
+      try {
+          String path="./src/laporan/nota.jasper";
+          HashMap parameter = new HashMap();
+          parameter.put("id_nota", txtidnota.getText());
+          JasperPrint print = JasperFillManager.fillReport(path, parameter, conn);
+          JasperViewer.viewReport(print, false);
+      } catch(Exception ex) {
+          JOptionPane.showMessageDialog(rootPane, "Dokumen Tidak Ada"+ex);
+      }
+  }
+//  public void cetak() {
+//    try {
+//
+//        // lokasi file jasper
+//        String path = "src/laporan/nota.jasper";
+//
+//        // parameter report
+//        HashMap<String, Object> parameter = new HashMap<>();
+//        parameter.put("id_nota", txtidnota.getText());
+//
+//        // load report
+//        JasperPrint print = JasperFillManager.fillReport(
+//                path,
+//                parameter,
+//                conn
+//        );
+//
+//        // tampilkan report
+//        JasperViewer viewer = new JasperViewer(print, false);
+//        viewer.setVisible(true);
+//
+//    } catch (Exception e) {
+//        JOptionPane.showMessageDialog(null,
+//                "Gagal mencetak nota : \n" + e.getMessage());
+//        e.printStackTrace();
+//    }
+//}
     /**
      * @param args the command line arguments
      */
