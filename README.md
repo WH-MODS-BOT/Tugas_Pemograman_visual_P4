@@ -1,242 +1,581 @@
-# Aplikasi Kasir Java NetBeans
+# 🛒 Aplikasi Kasir Java NetBeans 8.2
 
-## Deskripsi
+## 📌 Deskripsi Project
 
-Aplikasi ini merupakan sistem kasir desktop berbasis Java Swing yang dibuat menggunakan NetBeans dan database MySQL. Program digunakan untuk mengelola data barang, pelanggan, kasir, serta transaksi penjualan.
+Aplikasi ini merupakan sistem kasir desktop berbasis Java yang dibuat menggunakan **NetBeans IDE 8.2** dengan GUI Java Swing serta database MySQL. Project ini dirancang untuk membantu proses pengelolaan transaksi penjualan pada toko atau usaha kecil agar lebih cepat, terstruktur, dan mudah digunakan.
 
-Project ini menggunakan:
+Selain fitur transaksi penjualan, aplikasi ini juga menyediakan pengelolaan data barang, pelanggan, kasir, hingga pencetakan nota dan laporan menggunakan JasperReport.
 
-* Java Swing
-* JDBC
-* MySQL Database
-* NetBeans IDE
+Project ini sangat cocok dijadikan sebagai:
+
+* Tugas sekolah / kuliah
+* Project latihan Java Desktop
+* Referensi CRUD Java Swing
+* Belajar koneksi database MySQL
+* Belajar JasperReport di NetBeans
+* Sistem kasir sederhana berbasis desktop
 
 ---
 
-# Fitur Utama
+# ✨ Fitur Utama
 
-## Login Sistem
+## 🔐 Login Multi User
 
-* Login menggunakan username dan password
-* Session login menggunakan class `UserID`
-* Mendukung role `admin` dan `user`
+Aplikasi memiliki sistem login menggunakan username dan password.
 
-## Dashboard
+Fitur login:
 
-Menu utama aplikasi yang berisi:
+* Validasi username dan password
+* Penyimpanan role user
+* Pembatasan menu berdasarkan role
+* Redirect otomatis ke dashboard
 
-* Data Barang
-* Data Pelanggan
-* Data Kasir
-* Nota Penjualan
-* Logout
+Role yang tersedia:
 
-## Manajemen Barang
+* **Admin**
+* **Kasir**
 
-Fitur CRUD data barang:
+Admin memiliki akses penuh termasuk mengelola data kasir.
+
+---
+
+## 📦 Manajemen Data Barang
+
+Menu barang digunakan untuk mengelola seluruh data produk.
+
+Fitur:
 
 * Tambah barang
 * Edit barang
 * Hapus barang
 * Cari barang
-* Menampilkan data ke JTable
+* Menampilkan stok dan harga
+* Penyimpanan otomatis ke database
 
-Field utama:
+Data barang meliputi:
 
-* Kode Barang
-* Nama Barang
-* Jenis
-* Harga Beli
-* Harga Jual
+* Kode barang
+* Nama barang
+* Jenis barang
+* Harga beli
+* Harga jual
 * Stok
 
-## Manajemen Pelanggan
+---
 
-Fitur CRUD pelanggan:
+## 👥 Manajemen Pelanggan
+
+Digunakan untuk menyimpan data pelanggan.
+
+Fitur:
 
 * Tambah pelanggan
 * Edit pelanggan
 * Hapus pelanggan
 * Cari pelanggan
+* Popup pencarian pelanggan
 
-Field utama:
+Data pelanggan:
 
-* ID Pelanggan
-* Nama Pelanggan
-* Jenis Kelamin
-* Telepon
+* ID pelanggan
+* Nama pelanggan
+* Jenis kelamin
+* Nomor telepon
 * Alamat
 
-## Manajemen Kasir
+---
 
-Digunakan untuk mengelola akun kasir.
+## 👨‍💼 Manajemen Kasir
 
-Field utama:
+Menu ini hanya dapat diakses oleh admin.
 
-* ID Kasir
-* Nama Kasir
-* Jenis Kelamin
-* No Telepon
-* Agama
-* Alamat
+Fitur:
+
+* Tambah akun kasir
+* Edit data kasir
+* Hapus akun kasir
+* Pengaturan role
+* Login multi user
+
+Data kasir:
+
+* ID kasir
+* Nama kasir
 * Password
 * Role
 
-## Nota Penjualan
+---
 
-Fitur transaksi penjualan:
+## 🧾 Sistem Transaksi / Nota
 
-* Membuat nota otomatis
-* Memilih barang dan pelanggan
-* Menghitung total transaksi
-* Menyimpan data penjualan
+Merupakan fitur utama aplikasi.
+
+Fitur transaksi:
+
+* Input transaksi penjualan
+* Pilih pelanggan
+* Pilih barang menggunakan popup
+* Perhitungan otomatis
+* Total pembayaran
+* Kembalian otomatis
+* Cetak nota
+* Penyimpanan transaksi ke database
+
+Pada proses transaksi, sistem akan:
+
+1. Mengambil data pelanggan
+2. Mengambil data barang
+3. Menghitung subtotal
+4. Menghitung total pembayaran
+5. Mengurangi stok barang
+6. Menyimpan detail transaksi
+7. Mencetak nota
 
 ---
 
-# Struktur Project
+## 📊 Laporan Penjualan
+
+Aplikasi menggunakan **JasperReport** untuk mencetak laporan.
+
+Laporan yang tersedia:
+
+* Nota pembelian
+* Laporan pelanggan
+* Laporan penjualan
+
+Format file laporan:
+
+* `.jrxml`
+* `.jasper`
+
+Library yang digunakan:
+
+* JasperReports
+
+---
+
+# 🛠️ Teknologi Yang Digunakan
+
+| Teknologi    | Keterangan               |
+| ------------ | ------------------------ |
+| Java         | Bahasa pemrograman utama |
+| Java Swing   | GUI Desktop              |
+| NetBeans 8.2 | IDE utama                |
+| MySQL        | Database                 |
+| JDBC         | Koneksi database         |
+| JasperReport | Pembuatan laporan        |
+| XAMPP        | Menjalankan MySQL        |
+
+---
+
+# 📂 Struktur Project
 
 ```bash
-src/
-├── koneksi/
-│   └── koneksi.java
+Tugas_Kasir_Wahid_final/
 │
-└── Tampilan/
-    ├── login.java
-    ├── dashboard.java
-    ├── barang.java
-    ├── pelanggan.java
-    ├── kasir.java
-    ├── nota.java
-    ├── popupbarang.java
-    ├── popuppelangganan.java
-    └── UserID.java
+├── src/
+│   ├── Tampilan/
+│   │   ├── login.java
+│   │   ├── dashboard.java
+│   │   ├── barang.java
+│   │   ├── pelanggan.java
+│   │   ├── kasir.java
+│   │   ├── nota.java
+│   │   ├── popupbarang.java
+│   │   ├── popuppelangganan.java
+│   │   └── UserID.java
+│   │
+│   ├── koneksi/
+│   │   └── koneksi.java
+│   │
+│   └── laporan/
+│       ├── nota.jrxml
+│       ├── nota.jasper
+│       ├── LapPelanggan.jrxml
+│       └── LapPelanggan.jasper
+│
+├── nbproject/
+├── build.xml
+└── manifest.mf
 ```
 
 ---
 
-# Database
+# 🧠 Penjelasan File Penting
 
-Nama database:
+## `login.java`
 
-```sql
-wahid_penjualan
-```
+Digunakan untuk autentikasi user.
 
-## Tabel yang Digunakan
+Fungsi utama:
 
-* barang
-* pelanggan
-* kasir
-* nota
+* Mengecek username dan password
+* Mengambil role user
+* Menyimpan session login
+* Membuka dashboard
 
 ---
 
-# Koneksi Database
+## `dashboard.java`
 
-File koneksi:
+Halaman utama setelah login.
 
-```bash
-src/koneksi/koneksi.java
-```
+Berisi menu:
 
-Konfigurasi database:
+* Barang
+* Pelanggan
+* Nota
+* Kasir
+* Laporan
+* Logout
 
-```java
-jdbc:mysql://localhost/wahid_penjualan
-```
-
-Username:
-
-```java
-root
-```
-
-Password:
-
-```java
-""
-```
+Dashboard juga membatasi akses menu berdasarkan role.
 
 ---
 
-# Cara Menjalankan Project
+## `barang.java`
+
+Form CRUD data barang.
+
+Digunakan untuk:
+
+* Menambah data barang
+* Mengedit data
+* Menghapus data
+* Menampilkan tabel barang
+
+---
+
+## `pelanggan.java`
+
+Digunakan untuk pengelolaan data pelanggan.
+
+---
+
+## `kasir.java`
+
+Digunakan admin untuk mengelola akun kasir.
+
+---
+
+## `nota.java`
+
+Form transaksi utama.
+
+Fitur penting:
+
+* Input transaksi
+* Tambah item ke tabel
+* Hitung total otomatis
+* Hitung kembalian
+* Cetak nota
+* Simpan transaksi
+
+---
+
+## `popupbarang.java`
+
+Popup pencarian barang.
+
+Mempermudah pemilihan barang saat transaksi.
+
+---
+
+## `popuppelangganan.java`
+
+Popup pencarian pelanggan.
+
+---
+
+## `UserID.java`
+
+Digunakan sebagai penyimpanan sementara data login.
+
+Contoh:
+
+* ID kasir login
+* Role user login
+
+---
+
+## `koneksi.java`
+
+Digunakan untuk koneksi ke database MySQL menggunakan JDBC.
+
+---
+
+# 🗄️ Database
+
+Project menggunakan database MySQL.
+
+Kemungkinan tabel utama:
+
+| Tabel       | Fungsi                     |
+| ----------- | -------------------------- |
+| barang      | Menyimpan data barang      |
+| pelanggan   | Menyimpan data pelanggan   |
+| kasir       | Menyimpan akun kasir       |
+| nota        | Menyimpan transaksi        |
+| detail_nota | Menyimpan detail transaksi |
+
+---
+
+# ⚙️ Cara Menjalankan Project
 
 ## 1. Install Software
 
 Pastikan sudah menginstall:
 
 * Java JDK
-* NetBeans
-* XAMPP / Laragon
+* NetBeans IDE 8.2
+* XAMPP
 * MySQL
 
-## 2. Import Database
+---
 
-1. Buka phpMyAdmin
-2. Buat database:
+## 2. Jalankan MySQL
 
-```sql
-wahid_penjualan
+Buka XAMPP lalu:
+
+```bash
+Start Apache
+Start MySQL
 ```
 
-3. Import file SQL
+---
 
-## 3. Tambahkan JDBC
+## 3. Import Database
+
+1. Buka phpMyAdmin
+2. Buat database baru
+3. Import file `.sql`
+
+---
+
+## 4. Buka Project di NetBeans
+
+Langkah:
+
+```text
+File → Open Project → Pilih Folder Project
+```
+
+---
+
+## 5. Tambahkan Library JasperReport
+
+Jika report error:
+
+```text
+Klik kanan Project
+→ Properties
+→ Libraries
+→ Add JAR/Folder
+```
 
 Tambahkan library:
 
-```bash
+* jasperreports
+* commons-collections
+* groovy
+* itext
+* mysql connector
+
+---
+
+## 6. Jalankan Project
+
+Klik:
+
+```text
+Run Project (F6)
+```
+
+---
+
+# 🔄 Alur Sistem
+
+## Login
+
+```text
+User Login
+   ↓
+Validasi Database
+   ↓
+Masuk Dashboard
+```
+
+## Transaksi
+
+```text
+Pilih Pelanggan
+   ↓
+Pilih Barang
+   ↓
+Tambah ke Tabel
+   ↓
+Hitung Total
+   ↓
+Bayar
+   ↓
+Cetak Nota
+```
+
+---
+
+# 🧩 Konsep Pemrograman Yang Digunakan
+
+Project ini menggunakan beberapa konsep penting:
+
+## CRUD
+
+* Create
+* Read
+* Update
+* Delete
+
+## JDBC
+
+Digunakan untuk koneksi Java ke MySQL.
+
+## OOP (Object Oriented Programming)
+
+Menggunakan:
+
+* Class
+* Object
+* Method
+* Encapsulation
+
+## Event Driven Programming
+
+Menggunakan ActionListener pada button.
+
+## Java Swing
+
+Untuk membuat tampilan desktop GUI.
+
+---
+
+# 📸 Tampilan Aplikasi
+
+Beberapa tampilan utama:
+
+* Login
+* Dashboard
+* Form Barang
+* Form Pelanggan
+* Form Kasir
+* Form Nota
+* Popup Barang
+* Popup Pelanggan
+* Laporan JasperReport
+
+---
+
+# 🚀 Kelebihan Project
+
+✅ Interface sederhana dan mudah dipahami
+✅ Cocok untuk belajar Java Desktop
+✅ Menggunakan database MySQL
+✅ Sudah mendukung login multi user
+✅ Terdapat sistem transaksi
+✅ Support cetak laporan JasperReport
+✅ Struktur project cukup rapi
+✅ Mudah dikembangkan kembali
+
+---
+
+# 🔧 Pengembangan Yang Bisa Ditambahkan
+
+Beberapa fitur yang bisa dikembangkan:
+
+* Export PDF
+* Export Excel
+* Grafik penjualan
+* Scanner barcode
+* Dark mode
+* Multi cabang
+* Manajemen stok otomatis
+* Diskon dan promo
+* Backup database
+* Riwayat transaksi
+* Hak akses lebih detail
+
+---
+
+# 🐞 Kendala Yang Sering Terjadi
+
+## MySQL Tidak Connect
+
+Solusi:
+
+* Pastikan XAMPP aktif
+* Cek username dan password database
+* Cek port MySQL
+
+---
+
+## JasperReport Error
+
+Solusi:
+
+* Tambahkan library JasperReport
+* Pastikan file `.jasper` tersedia
+* Pastikan query benar
+
+---
+
+## Driver JDBC Tidak Ditemukan
+
+Solusi:
+Tambahkan:
+
+```text
 mysql-connector-java.jar
 ```
 
-Ke bagian Libraries di NetBeans.
-
-## 4. Jalankan Project
-
-Buka project di NetBeans lalu tekan:
-
-```bash
-F6
-```
+ke library project.
 
 ---
 
-# Teknologi yang Digunakan
+# 📚 Cocok Untuk Belajar
 
-| Teknologi | Fungsi             |
-| --------- | ------------------ |
-| Java      | Bahasa pemrograman |
-| Swing     | GUI desktop        |
-| JDBC      | Koneksi database   |
-| MySQL     | Database           |
-| NetBeans  | IDE                |
+Project ini cocok untuk belajar:
 
----
-
-# Kelebihan Project
-
-* GUI desktop sederhana dan mudah digunakan
-* CRUD data lengkap
-* Sistem login dan role user
-* Database MySQL
-* Cocok untuk pembelajaran Java Swing
+* Java Desktop
+* Java Swing
+* NetBeans GUI Builder
+* CRUD Java
+* JDBC MySQL
+* JasperReport
+* Sistem kasir
+* Struktur project desktop
 
 ---
 
-# Kekurangan Project
+# 👨‍💻 Author
 
-* Password belum dienkripsi
-* Belum ada fitur laporan
-* Tampilan masih sederhana
+Project dibuat untuk pembelajaran dan pengembangan aplikasi kasir desktop berbasis Java NetBeans.
+
+BY WH MODS DEV
+---
+
+# 📜 License
+
+Project ini dapat digunakan untuk:
+
+* Belajar
+* Referensi coding
+* Pengembangan tugas
+* Modifikasi pribadi
 
 ---
 
-# Author
+# 🎯 Kesimpulan
 
-WH-MODS-BOT
+Aplikasi Kasir Java NetBeans 8.2 ini merupakan project desktop yang lengkap untuk kebutuhan pembelajaran maupun implementasi sederhana pada sistem penjualan.
 
----
+Dengan adanya fitur login, pengelolaan barang, pelanggan, kasir, transaksi, serta laporan JasperReport, project ini sudah mencakup banyak konsep penting dalam pengembangan aplikasi desktop menggunakan Java.
 
-# Kesimpulan
-
-Project ini merupakan aplikasi kasir desktop berbasis Java dan MySQL yang memiliki fitur utama seperti login, manajemen data, dan transaksi penjualan. Cocok digunakan sebagai pembelajaran CRUD Java Swing menggunakan JDBC dan database MySQL.
+Selain mudah dipahami, struktur project juga cukup baik sehingga memudahkan proses pengembangan lebih lanjut.
